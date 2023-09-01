@@ -3,50 +3,50 @@ import 'react-datepicker/dist/react-datepicker.css'
 import './style.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home'
-import Layout from "./components/Layout";
-import EfficiencyManagement from "./pages/EfficiencyManagement";
-import AnimalManagement from "./pages/AnimalManagement";
-import WeatherManagement from "./pages/WeatherManagement";
+import Layout from './components/Layout'
+import EfficiencyManagement from './pages/EfficiencyManagement'
+import AnimalManagement from './pages/AnimalManagement'
+import WeatherManagement from './pages/WeatherManagement'
 import FertilizationManagement from './pages/FertilizationManagement'
 import CropManagement from './pages/CropManagement'
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <Layout/>,
+        path: '/',
+        element: <Layout />,
         children: [
             {
                 index: true,
-                element: <Home/>
+                element: <Home />,
             },
             {
                 path: 'fertilization',
-                element: <FertilizationManagement/>
+                element: <FertilizationManagement />,
             },
             {
                 path: 'crop',
-                element: <CropManagement/>
+                element: <CropManagement />,
             },
             {
                 path: 'efficiency',
-                element: <EfficiencyManagement/>
+                element: <EfficiencyManagement />,
             },
             {
                 path: 'animal',
-                element: <AnimalManagement/>
+                element: <AnimalManagement />,
             },
             {
                 path: 'weather',
-                element: <WeatherManagement/>
-            }
-        ]
+                element: <WeatherManagement />,
+            },
+        ],
     },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <RouterProvider router={router}/>
-    </React.StrictMode>,
+        <RouterProvider router={router} />
+    </React.StrictMode>
 )
