@@ -254,18 +254,9 @@ export default function AnimalManagement() {
                             <Card.Title>NOTE</Card.Title>
                         </Card.Header>
                         <Card.Body>
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and
-                            scrambled it to make a type specimen book. It has
-                            survived not only five centuries, but also the leap
-                            into electronic typesetting, remaining essentially
-                            unchanged. It was popularised in the 1960s with the
-                            release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing
-                            software like Aldus PageMaker including versions of
-                            Lorem Ipsum.
+                            With the weather control page, you can manually record which crops you need to plant, at which temperature and between which dates.
+                            This information will be useful to you in the future. You will no longer have to think about it and you will be able to use the information you have saved continuously.
+                            You will also be able to check the weather on a daily basis on the weather forecast at the top of the page.
                         </Card.Body>
                     </Card>
                 </Col>
