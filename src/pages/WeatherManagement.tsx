@@ -10,8 +10,18 @@ type Form = Weather & {
     endDate: Date
 }
 
+type CurrentWeather = {
+    temp_c: string
+    condition: {
+        text: string
+        icon: string
+        code: number
+    }
+}
+
 export default function AnimalManagement() {
-    const [weather, setWeather] = useState<null | string>(null)
+    const [weatherStatus, setWeatherStatus] = useState('loading')
+    const [weather, setWeather] = useState<CurrentWeather>()
     const cropId = useId()
     const temperatureId = useId()
     const startDateId = useId()
@@ -43,27 +53,34 @@ export default function AnimalManagement() {
             .then((res) => res.json())
             .then((res) => {
                 if (res.error) {
-                    setWeather('error')
+                    setWeatherStatus('error')
                 } else {
-                    setWeather(res.current.temp_c)
+                    setWeatherStatus('success')
+                    setWeather(res.current)
                 }
             })
     }, [])
 
     return (
         <Container>
-            <Row>
-                <Col>
-                    <Card className="mt-4">
-                        <Card.Header>
-                            <Card.Title>Weather INFO</Card.Title>
-                        </Card.Header>
-                        <Card.Body>
-                            Weather in warsaw is : {weather} C°
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
+            {weatherStatus !== 'loading' && (
+                <Row>
+                    <Col>
+                        <Card className="mt-4">
+                            <Card.Header>
+                                <Card.Title>Weather INFO</Card.Title>
+                            </Card.Header>
+                            <Card.Body>
+                                {weatherStatus === 'error'
+                                    ? 'an error occurred'
+                                    : `Weather in warsaw is : ${
+                                          weather!.temp_c
+                                      } C° ${weather!.condition.text}`}
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            )}
             <Row>
                 <Col>
                     <Card className="mt-3">
