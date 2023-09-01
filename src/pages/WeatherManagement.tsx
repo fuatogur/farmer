@@ -2,7 +2,7 @@ import { Button, Card, Col, Container, Form, Row, Table } from 'react-bootstrap'
 import { Controller, useForm } from 'react-hook-form'
 import { Weather } from '../types'
 import useWeatherStore from '../stores/useWeatherStore'
-import { useId } from 'react'
+import { useEffect, useId, useState } from 'react'
 import DatePicker from 'react-datepicker'
 
 type Form = Weather & {
@@ -11,6 +11,7 @@ type Form = Weather & {
 }
 
 export default function AnimalManagement() {
+    const [weather, setWeather] = useState<null | string>(null)
     const cropId = useId()
     const temperatureId = useId()
     const startDateId = useId()
@@ -35,11 +36,37 @@ export default function AnimalManagement() {
         reset()
     })
 
+    useEffect(() => {
+        fetch(
+            'https://api.weatherapi.com/v1/current.json?key=058ed12681714414806105424230109&q=warsaw'
+        )
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.error) {
+                    setWeather('error')
+                } else {
+                    setWeather(res.current.temp_c)
+                }
+            })
+    }, [])
+
     return (
         <Container>
             <Row>
                 <Col>
                     <Card className="mt-4">
+                        <Card.Header>
+                            <Card.Title>Weather INFO</Card.Title>
+                        </Card.Header>
+                        <Card.Body>
+                            Weather in warsaw is : {weather} C°
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Card className="mt-3">
                         <Card.Header>
                             <Card.Title>Create Weather</Card.Title>
                         </Card.Header>
