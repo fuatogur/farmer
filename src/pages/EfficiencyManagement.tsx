@@ -18,7 +18,9 @@ export default function EfficiencyManagement() {
 
     const onSubmit = handleSubmit(data => {
         addEfficiency({...data, id: efficiencies.length ? efficiencies[efficiencies.length - 1].id + 1 : 0})
-        reset()
+        reset({
+            efficiency: "0"
+        })
     })
 
     return (
@@ -70,14 +72,21 @@ export default function EfficiencyManagement() {
                                     </Form.Control.Feedback>
                                 </Form.Group>
 
-                                <Form.Group className="mb-3" controlId={efficiencyId}>
+                                <Form.Group className="mb-3" style={{position:'relative'}} controlId={efficiencyId}>
                                     <Form.Label>Efficiency</Form.Label>
-                                    <Controller
-                                        control={control} rules={{required: true}}
-                                        name="efficiency"
-                                        defaultValue=""
-                                        render={({field}) => <Form.Control placeholder="Efficiency" {...field} />}
-                                    />
+                                    <div className="position-relative">
+                                        <Controller
+                                            control={control} rules={{required: true}}
+                                            name="efficiency"
+                                            render={({field}) => <Form.Control placeholder="Efficiency" type="number" {...field} />}
+                                        />
+                                        <span style={{
+                                            position: 'absolute',
+                                            padding: '6px 20px',
+                                            right: 0,
+                                            top: 0
+                                        }}>KG</span>
+                                    </div>
                                     <Form.Control.Feedback type="invalid">
                                         {errors.efficiency?.message}
                                     </Form.Control.Feedback>
@@ -136,6 +145,20 @@ export default function EfficiencyManagement() {
                                 ))}
                                 </tbody>
                             </Table>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Card className="mt-3 mb-3" style={{maxWidth: 600, margin: '0 auto'}}>
+                        <Card.Header>
+                            <Card.Title>
+                                NOTE
+                            </Card.Title>
+                        </Card.Header>
+                        <Card.Body>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                         </Card.Body>
                     </Card>
                 </Col>

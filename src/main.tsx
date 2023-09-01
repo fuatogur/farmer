@@ -9,6 +9,8 @@ import Layout from "./components/Layout";
 import EfficiencyManagement from "./pages/EfficiencyManagement";
 import AnimalManagement from "./pages/AnimalManagement";
 import WeatherManagement from "./pages/WeatherManagement";
+import FertilizationManagement from './pages/FertilizationManagement'
+import CropManagement from './pages/CropManagement'
 
 const router = createBrowserRouter([
     {
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home/>
+            },
+            {
+                path: 'fertilization',
+                element: <FertilizationManagement/>
+            },
+            {
+                path: 'crop',
+                element: <CropManagement/>
             },
             {
                 path: 'efficiency',

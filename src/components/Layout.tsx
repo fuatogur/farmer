@@ -8,6 +8,8 @@ export default function Layout() {
                 <Container>
                     <Nav>
                         <NavLink className="nav-link" to="/">Home</NavLink>
+                        <NavLink className="nav-link" to="/fertilization">Fertilization Management</NavLink>
+                        <NavLink className="nav-link" to="/crop">Crop Management</NavLink>
                         <NavLink className="nav-link" to="/efficiency">Efficiency Management</NavLink>
                         <NavLink className="nav-link" to="/animal">Animal Management</NavLink>
                         <NavLink className="nav-link" to="/weather">Weather Management</NavLink>
